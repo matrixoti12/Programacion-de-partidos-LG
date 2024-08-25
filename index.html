@@ -53,8 +53,8 @@
         }
 
         .banner {
-            display: flex;
-            justify-content: space-between;
+            display: none; /* Inicialmente oculto */
+            justify-content: center;
             align-items: center;
             padding: 15px;
             background: rgba(0, 0, 0, 0.7);
@@ -64,11 +64,15 @@
             animation: growBanner 1s ease forwards, slideIn 1s ease forwards;
             flex-direction: column;
             position: relative;
-            border: 5px solid transparent; /* Default border */
+            border: 5px solid transparent;
         }
 
         .banner.femenino {
             border-color: #ff69b4; /* Pink border for women's matches */
+        }
+
+        .banner.masculino {
+            Border-color: #16c86080; /* Pink border for women's matches */
         }
 
         .time-location {
@@ -143,6 +147,16 @@
                 width: 40px;
             }
         }
+
+        .day-display {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -151,34 +165,186 @@
         <div class="logo">
             <img src="https://i.imgur.com/AF4PrbF.png" alt="Logo Liga Guazapa">
         </div>
+        <div id="current-day" class="day-display">Domingo</div>
         <div id="carousel" class="carousel">
-            <div class="banner femenino">
+            <!-- Partidos del Lunes -->
+            <div class="banner femenino lunes">
                 <div class="time-location">
                     <div class="time">6:00 PM</div>
                     <div class="location">Cancha del Parque Central de Guazapa</div>
                 </div>
                 <div class="teams">Olimpic vs Milan</div>
             </div>
-            <div class="banner">
+            <div class="banner masculino lunes">
                 <div class="time-location">
                     <div class="time">6:45 PM</div>
                     <div class="location">Cancha del Parque Central de Guazapa</div>
                 </div>
                 <div class="teams">Real Madrid vs Juventus</div>
             </div>
-            <div class="banner">
+            <div class="banner masculino lunes">
                 <div class="time-location">
                     <div class="time">7:30 PM</div>
                     <div class="location">Cancha del Parque Central de Guazapa</div>
                 </div>
                 <div class="teams">Newcastle vs Rodeo#2</div>
             </div>
-            <div class="banner">
+            <div class="banner masculino lunes">
                 <div class="time-location">
                     <div class="time">8:15 PM</div>
                     <div class="location">Cancha del Parque Central de Guazapa</div>
                 </div>
                 <div class="teams">Cruz Azul vs Olimpic</div>
+            </div>
+
+            <!-- Partidos del Martes -->
+            <div class="banner femenino martes">
+                <div class="time-location">
+                    <div class="time">6:00 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Sevilla vs Valencia</div>
+            </div>
+            <div class="banner masculino martes">
+                <div class="time-location">
+                    <div class="time">6:45 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Talleres vs Olimpic</div>
+            </div>
+            <div class="banner masculino martes">
+                <div class="time-location">
+                    <div class="time">7:30 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Arsenal vs Rodeo#2</div>
+            </div>
+            <div class="banner masculino martes">
+                <div class="time-location">
+                    <div class="time">8:15 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Borussia vs Sevilla</div>
+            </div>
+
+            <!-- Partidos del Miércoles -->
+            <div class="banner femenino miercoles">
+                <div class="time-location">
+                    <div class="time">6:00 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">S.Antonio#2 vs Olimpic</div>
+            </div>
+            <div class="banner masculino miercoles">
+                <div class="time-location">
+                    <div class="time">6:45 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Yogui.A vs Valencia</div>
+            </div>
+            <div class="banner masculino miercoles">
+                <div class="time-location">
+                    <div class="time">7:30 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">B.Leverkusen vs Tropic FC</div>
+            </div>
+            <div class="banner masculino miercoles">
+                <div class="time-location">
+                    <div class="time">8:15 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Redbull vs Juventus</div>
+            </div>
+
+            <!-- Partidos del Jueves -->
+            <div class="banner femenino jueves">
+                <div class="time-location">
+                    <div class="time">6:00 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Colon vs PSG</div>
+            </div>
+            <div class="banner masculino jueves">
+                <div class="time-location">
+                    <div class="time">6:45 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Baratillo vs Leon</div>
+            </div>
+            <div class="banner masculino jueves">
+                <div class="time-location">
+                    <div class="time">7:30 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Galaxi vs Atletico</div>
+            </div>
+            <div class="banner masculino jueves">
+                <div class="time-location">
+                    <div class="time">8:15 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">River vs Newcastle</div>
+            </div>
+
+            <!-- Partidos del Viernes -->
+            <div class="banner femenino viernes">
+                <div class="time-location">
+                    <div class="time">6:00 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">The Queen vs Sevilla</div>
+            </div>
+            <div class="banner masculino viernes">
+                <div class="time-location">
+                    <div class="time">6:45 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">RD1 vs Redbull</div>
+            </div>
+            <div class="banner masculino viernes">
+                <div class="time-location">
+                    <div class="time">7:30 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Valencia vs Torrejas FC</div>
+            </div>
+            <div class="banner masculino viernes">
+                <div class="time-location">
+                    <div class="time">8:15 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Roma vs Quezoneta</div>
+            </div>
+
+            <!-- Partidos del Sábado -->
+            <div class="banner masculino sabado">
+                <div class="time-location">
+                    <div class="time">6:00 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Halcones FC vs Champagne</div>
+            </div>
+            <div class="banner masculino sabado">
+                <div class="time-location">
+                    <div class="time">6:45 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Sevilla vs Real Madrid</div>
+            </div>
+            <div class="banner masculino sabado">
+                <div class="time-location">
+                    <div class="time">7:30 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">B.Leverkusen vs Clase A</div>
+            </div>
+            <div class="banner masculino sabado">
+                <div class="time-location">
+                    <div class="time">8:15 PM</div>
+                    <div class="location">Cancha del Parque Central de Guazapa</div>
+                </div>
+                <div class="teams">Poco Loco vs Cruz Azul</div>
             </div>
         </div>
     </div>
@@ -189,6 +355,18 @@
             let banners = document.querySelectorAll('.banner');
             let currentIndex = 0;
 
+            function updateDayDisplay() {
+                const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+                const today = new Date().getDay(); // Obtiene el día actual de la semana (0 = Domingo)
+                let displayDay = days[today];
+                
+                if (today === 0) { // Si es domingo
+                    displayDay = 'Lunes';
+                }
+                
+                document.getElementById('current-day').textContent = displayDay;
+            }
+
             function showBanner(index) {
                 banners.forEach((banner, i) => {
                     banner.style.display = i === index ? 'flex' : 'none';
@@ -196,10 +374,46 @@
             }
 
             function nextBanner() {
-                currentIndex = (currentIndex + 1) % banners.length;
-                showBanner(currentIndex);
+                const today = new Date().getDay(); // Obtiene el día actual de la semana (0 = Domingo)
+                let dayClass = '';
+                switch (today) {
+                    case 0:
+                        dayClass = 'lunes';
+                        break;
+                    case 1:
+                        dayClass = 'lunes';
+                        break;
+                    case 2:
+                        dayClass = 'martes';
+                        break;
+                    case 3:
+                        dayClass = 'miercoles';
+                        break;
+                    case 4:
+                        dayClass = 'jueves';
+                        break;
+                    case 5:
+                        dayClass = 'viernes';
+                        break;
+                    case 6:
+                        dayClass = 'sabado';
+                        break;
+                }
+
+                banners.forEach((banner, i) => {
+                    banner.style.display = banner.classList.contains(dayClass) ? 'none' : 'none';
+                });
+
+                let filteredBanners = Array.from(banners).filter(banner => banner.classList.contains(dayClass));
+                
+                if (filteredBanners.length > 0) {
+                    showBanner(currentIndex % filteredBanners.length);
+                }
+                
+                currentIndex = (currentIndex + 1) % filteredBanners.length;
             }
 
+            updateDayDisplay();
             showBanner(currentIndex);
             setInterval(nextBanner, 5000); // Cambia el banner cada 5 segundos
         });
