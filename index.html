@@ -28,7 +28,7 @@
 
         h1 {
             font-size: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #00d2ff;
             text-transform: uppercase;
         }
@@ -48,38 +48,27 @@
         }
 
         .carousel {
-            position: relative;
-            max-width: 100%;
-            height: 200px; /* Ajusta la altura según tu preferencia */
             overflow: hidden;
+            max-width: 100%;
         }
 
         .banner {
-            position: absolute;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
             padding: 15px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            transform: scale(0.5);
+            animation: growBanner 1s ease forwards, slideIn 1s ease forwards;
             flex-direction: column;
-            opacity: 0;
-            transform: translateX(100%);
+            position: relative;
+            border: 5px solid transparent; /* Default border */
         }
 
-        .femenino-tag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #ff69b4;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: bold;
+        .banner.femenino {
+            border-color: #ff69b4; /* Pink border for women's matches */
         }
 
         .time-location {
@@ -99,15 +88,35 @@
         }
 
         .teams {
-            font-size: 26px;
+            font-size: 22px;
             margin: 10px 0;
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
 
         .vs {
-            font-size: 2.5em;
+            font-size: 2em;
             margin: 0 20px;
+        }
+
+        @keyframes growBanner {
+            0% {
+                transform: scale(0.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @media screen and (max-width: 600px) {
@@ -115,10 +124,11 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 10px;
+                border: 3px solid transparent; /* Reduced border width for mobile */
             }
 
             .vs {
-                font-size: 2em;
+                font-size: 1.5em;
             }
 
             .time {
@@ -132,10 +142,6 @@
             .logo img {
                 width: 40px;
             }
-
-            .femenino-tag {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
@@ -146,8 +152,7 @@
             <img src="https://i.imgur.com/AF4PrbF.png" alt="Logo Liga Guazapa">
         </div>
         <div id="carousel" class="carousel">
-            <div class="banner active">
-                <div class="femenino-tag">Femenino</div>
+            <div class="banner femenino">
                 <div class="time-location">
                     <div class="time">6:00 PM</div>
                     <div class="location">Cancha del Parque Central de Guazapa</div>
@@ -185,15 +190,12 @@
             let currentIndex = 0;
 
             function showBanner(index) {
-                gsap.fromTo(banners[index], {opacity: 0, x: 100}, {opacity: 1, x: 0, duration: 1});
-            }
-
-            function hideBanner(index) {
-                gsap.to(banners[index], {opacity: 0, x: -100, duration: 1});
+                banners.forEach((banner, i) => {
+                    banner.style.display = i === index ? 'flex' : 'none';
+                });
             }
 
             function nextBanner() {
-                hideBanner(currentIndex);
                 currentIndex = (currentIndex + 1) % banners.length;
                 showBanner(currentIndex);
             }
